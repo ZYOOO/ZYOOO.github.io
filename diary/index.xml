@@ -41,14 +41,5 @@ Eclipse中文包配置 今天学到了怎么配置eclipse的语言包，在网�
       <description></description>
     </item>
     
-    <item>
-      <title></title>
-      <link>/diary/text/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>/diary/text/</guid>
-      <description>测试 </description>
-    </item>
-    
   </channel>
 </rss>
