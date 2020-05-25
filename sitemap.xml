@@ -13,7 +13,7 @@
   
   <url>
     <loc>/diary/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -22,27 +22,7 @@
   
   <url>
     <loc>/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/aaa/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/bbb/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/tags/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>/diary/text3/</loc>
-    <lastmod>2020-05-25T00:00:00+00:00</lastmod>
+    <lastmod>2020-05-19T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -57,6 +37,11 @@
   
   <url>
     <loc>/post/text/</loc>
+    <lastmod>2020-05-19T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>/tags/</loc>
     <lastmod>2020-05-19T00:00:00+00:00</lastmod>
   </url>
   
