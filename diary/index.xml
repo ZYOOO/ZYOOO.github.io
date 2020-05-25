@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>dairy on </title>
+    <link>/diary/</link>
+    <description>Recent content in dairy on </description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>ZY-CN</language>
+    <lastBuildDate>Tue, 19 May 2020 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="/diary/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Dairy1</title>
+      <link>/diary/dairy_1/</link>
+      <pubDate>Tue, 19 May 2020 00:00:00 +0000</pubDate>
+      
+      <guid>/diary/dairy_1/</guid>
+      <description>Dairy 1 ​	今天的课内学习任务还是没完成&amp;hellip;&amp;hellip;.
+早上运行了第一个Java程序，没错就是hello world，但是过程依然不顺利，记录一下。
+较高 JDK 生成的class文件无法在低版本的JVM上运行 但我明明就是直接装的最新JDK 里面应该包含了最新的JVM，所以想到是PATH环境变量出了问题。然后将path中我新的JDK上移置顶。
+于是就成功运行了第一个Java程序
+看了Java的语法之后发现它的包好像很好用，里面很多类都很方便，虽然对我初学来说它看上去敲代码时没C那么简便，但貌似在集成环境下关键字有快捷输入好像很方便，看了之后才知道面向对象编程原来有那么多东西。
+路还很长，也很期待。
+Eclipse中文包配置 今天学到了怎么配置eclipse的语言包，在网上看了两个方法，但是第一个比较麻烦的感觉就失败了，第二个试了就成功了
+1. 先到eclipse官网下载对应中文包 babel
+点击Download下载对应的中文包
+2.在eclipse目录下新建文件夹 然后在eclipse安装目录新建文件夹links文件夹，然后在links下新建文件夹language，再把中文包解压进去，最后新建一个文档language.link ,要注意去文件管理的地方把隐藏文件扩展名给取消了不然修改不了格式(早上创建text.java的时候就是没去设置导致创建的是text.java.txt) ,最后在.link文件中输入path=language文件夹的路径
+如果打不开.link的话就先输入在修改扩展名，注意双斜杠要添加，然后打开eclipse就会自动变成中文版的了。
+虽然最后我还是改成英文的了，毕竟变强才是解决问题的最好方法。
+晚安 peace</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/diary/poems_1/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/diary/poems_1/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>/diary/text/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>/diary/text/</guid>
+      <description>测试 </description>
+    </item>
+    
+  </channel>
+</rss>

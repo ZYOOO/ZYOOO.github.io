@@ -1,0 +1,876 @@
+<!DOCTYPE html>
+<html lang="ZY-CN"><head>
+  <title>
+    欢迎来到猿味奶茶 - Markdwon语法学习 
+  </title>
+  <meta name="theme-color" content="" />
+  <meta charset="utf-8" />
+  <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+  <meta name="description" content="A hugo theme for personal blogs" />
+  <meta name="author" content="ZYOOO" />
+
+  <meta property="og:url" content="/post/text/" />
+  <meta property="og:type" content="website" />
+  <meta
+    property="og:title"
+    content="欢迎来到猿味奶茶 - Markdwon语法学习 "
+  />
+  <meta property="og:description" content="A hugo theme for personal blogs" />
+  <meta property="og:image" content="images/profile.jpg" />
+
+  <link rel="stylesheet" href="/css/main.css" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Mukta:wght@300;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <style>
+    html {
+      font-size: 16px;
+    }
+  </style>
+
+  <script>
+    let initialY;
+    window.onload = function () {
+      initialY = window.scrollY;
+    };
+
+    window.addEventListener("scroll", () => {
+      let currentY = window.scrollY;
+      let header = document.querySelector("header");
+      let toTop = document.querySelector(".to-top-button");
+
+      toTop.style.display = currentY < 500 ? "none" : "inline-flex";
+
+      if (
+        document.body.offsetHeight - (window.innerHeight + window.pageYOffset) < 10
+      ) {
+        initialY = currentY;
+        header.style.top = "0";
+        return;
+      }
+
+      if (currentY - initialY > 60) {
+        initialY = currentY;
+        header.style.top = "-58px";
+      }
+
+      if (currentY - initialY < -5 || currentY < 60) {
+        initialY = currentY;
+        header.style.top = "0";
+      }
+    });
+  </script>
+</head>
+<body style="min-height: 100vh;"><header
+  style="
+  width: 95vw;
+  max-width: 960px;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  transition: all 0.3s;
+  height: 60px;
+  box-shadow:  0px 0px 2px 2px black ;
+  background-color:  var(--bgDarker) ;
+  "
+>
+  <div
+  class="hamburger-cross"
+  style="
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    z-index: 50;
+    width: 50px;
+    height: 50px;
+    font-size: 1.2em;
+  "
+  onclick="myFunction()"
+>
+  <i class="hamburger" style="visibility: visible;">
+    <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="bars"
+  class="svg-inline--fa fa-bars fa-w-14"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 448 512"
+>
+  <path
+    fill="currentColor"
+    d="M16 132h416c8.837 0 16-7.163 16-16V76c0-8.837-7.163-16-16-16H16C7.163 60 0 67.163 0 76v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16zm0 160h416c8.837 0 16-7.163 16-16v-40c0-8.837-7.163-16-16-16H16c-8.837 0-16 7.163-16 16v40c0 8.837 7.163 16 16 16z"
+  ></path>
+</svg>
+
+  </i>
+
+  <i class="cross" style="visibility: hidden;">
+    <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="times"
+  class="svg-inline--fa fa-times fa-w-11"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 352 512"
+>
+  <path
+    fill="currentColor"
+    d="M242.72 256l100.07-100.07c12.28-12.28 12.28-32.19 0-44.48l-22.24-22.24c-12.28-12.28-32.19-12.28-44.48 0L176 189.28 75.93 89.21c-12.28-12.28-32.19-12.28-44.48 0L9.21 111.45c-12.28 12.28-12.28 32.19 0 44.48L109.28 256 9.21 356.07c-12.28 12.28-12.28 32.19 0 44.48l22.24 22.24c12.28 12.28 32.2 12.28 44.48 0L176 322.72l100.07 100.07c12.28 12.28 32.2 12.28 44.48 0l22.24-22.24c12.28-12.28 12.28-32.19 0-44.48L242.72 256z"
+  ></path>
+</svg>
+
+  </i>
+</div>
+<script>
+  const htmlDoc = document.querySelector("html");
+  const scrollBarWidth = window.innerWidth - htmlDoc.clientWidth;
+
+  const showMenu = (menu, hamBurger, cross) => {
+    htmlDoc.style.overflowY = "hidden";
+    htmlDoc.style.marginRight = scrollBarWidth + "px";
+    hamBurger.style.visibility = "hidden";
+    cross.style.visibility = "visible";
+    menu.classList.remove("collapsed");
+    menu.style.top = "0";
+  };
+
+  const hideMenu = (menu, hamBurger, cross) => {
+    htmlDoc.style.overflowY = "scroll";
+    htmlDoc.style.marginRight = "0";
+    hamBurger.style.visibility = "visible";
+    cross.style.visibility = "hidden";
+    menu.classList.add("collapsed");
+    menu.style.top = "-100vh";
+  };
+
+  const myFunction = () => {
+    const menu = document.querySelector(".slide-menu");
+    const hamBurger = document.querySelector(".hamburger");
+    const cross = document.querySelector(".cross");
+    menu.classList.contains("collapsed")
+      ? showMenu(menu, hamBurger, cross)
+      : hideMenu(menu, hamBurger, cross);
+  };
+</script>
+
+  <div
+    style="
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      align-items: flex-end;
+      padding: 0 1em 0 2em;
+      height: 100%;
+    "
+  >
+    <div
+  class="breadcrumb"
+  style="padding: 12px 0; line-height: 0.85em; text-align: right;"
+>
+  
+
+
+
+
+
+<span style="font-size: 0.8em;">
+  <a
+    href="/"
+    class="breadcrumb-link "
+    style="margin-left: 5px; font-size: 0.85em; color:var(--textColor);"
+    ><i><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="home"
+  class="svg-inline--fa fa-home fa-w-18"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 576 512"
+>
+  <path
+    fill="currentColor"
+    d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+  ></path>
+</svg>
+</i></a
+  >
+</span>
+
+
+<span style="font-size: 0.8em;">
+  /<a
+    href="/post/"
+    class="breadcrumb-link "
+    style="margin-left: 5px; font-size: 0.85em; color:var(--textColor);"
+    >Blog Posts</a
+  >
+</span>
+
+
+<span style="font-size: 0.8em;">
+  /<a
+    href="#"
+    class="breadcrumb-link active"
+    style="margin-left: 5px; font-size: 0.85em; color:var(--primaryColor);"
+    >Markdwon语法学习...</a
+  >
+</span>
+
+</div>
+
+
+  </div>
+  <div
+  class="slide-menu collapsed"
+  style="
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: var(--bgTransparent);
+    position: fixed;
+    left: 0;
+    top: -100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  "
+>
+  <div
+    class="menu-container"
+    style="
+      background-color: var(--bgColor);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding: 6px;
+      border: solid 1px var(--textColor);
+      border-radius: 5px;
+      box-shadow: 3px 3px 5px 2px black;
+    "
+  >
+    <a class="menu-item" href="/"><i><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="home"
+  class="svg-inline--fa fa-home fa-w-18"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 576 512"
+>
+  <path
+    fill="currentColor"
+    d="M280.37 148.26L96 300.11V464a16 16 0 0 0 16 16l112.06-.29a16 16 0 0 0 15.92-16V368a16 16 0 0 1 16-16h64a16 16 0 0 1 16 16v95.64a16 16 0 0 0 16 16.05L464 480a16 16 0 0 0 16-16V300L295.67 148.26a12.19 12.19 0 0 0-15.3 0zM571.6 251.47L488 182.56V44.05a12 12 0 0 0-12-12h-56a12 12 0 0 0-12 12v72.61L318.47 43a48 48 0 0 0-61 0L4.34 251.47a12 12 0 0 0-1.6 16.9l25.5 31A12 12 0 0 0 45.15 301l235.22-193.74a12.19 12.19 0 0 1 15.3 0L530.9 301a12 12 0 0 0 16.9-1.6l25.5-31a12 12 0 0 0-1.7-16.93z"
+  ></path>
+</svg>
+</i>Home</a>
+
+    
+    <a class="menu-item" href="/about/"
+      ><i> <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="portrait"
+  class="svg-inline--fa fa-portrait fa-w-12"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 384 512"
+>
+  <path
+    fill="currentColor"
+    d="M336 0H48C21.5 0 0 21.5 0 48v416c0 26.5 21.5 48 48 48h288c26.5 0 48-21.5 48-48V48c0-26.5-21.5-48-48-48zM192 128c35.3 0 64 28.7 64 64s-28.7 64-64 64-64-28.7-64-64 28.7-64 64-64zm112 236.8c0 10.6-10 19.2-22.4 19.2H102.4C90 384 80 375.4 80 364.8v-19.2c0-31.8 30.1-57.6 67.2-57.6h5c12.3 5.1 25.7 8 39.8 8s27.6-2.9 39.8-8h5c37.1 0 67.2 25.8 67.2 57.6v19.2z"
+  ></path>
+</svg>
+
+      </i>About Me</a
+    >
+    
+    <a class="menu-item" href="/post/"
+      ><i> <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="folder"
+  class="svg-inline--fa fa-folder fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"
+  ></path>
+</svg>
+ </i>Blog Posts</a
+    >
+    
+    <a class="menu-item" href="/diary/"
+      ><i> <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="folder"
+  class="svg-inline--fa fa-folder fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M464 128H272l-64-64H48C21.49 64 0 85.49 0 112v288c0 26.51 21.49 48 48 48h416c26.51 0 48-21.49 48-48V176c0-26.51-21.49-48-48-48z"
+  ></path>
+</svg>
+ </i>dairy</a
+    >
+    
+    <a class="menu-item" href="/archive/"
+      ><i> <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="archive"
+  class="svg-inline--fa fa-archive fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M32 448c0 17.7 14.3 32 32 32h384c17.7 0 32-14.3 32-32V160H32v288zm160-212c0-6.6 5.4-12 12-12h104c6.6 0 12 5.4 12 12v8c0 6.6-5.4 12-12 12H204c-6.6 0-12-5.4-12-12v-8zM480 32H32C14.3 32 0 46.3 0 64v48c0 8.8 7.2 16 16 16h480c8.8 0 16-7.2 16-16V64c0-17.7-14.3-32-32-32z"
+  ></path>
+</svg>
+
+      </i>Archive</a
+    >
+    
+  </div>
+</div>
+<script>
+  const slideMenu = document.querySelector(".slide-menu");
+  const menuContainer = document.querySelector(".menu-container");
+  slideMenu.addEventListener("click", (event) => {
+    if (event.target !== menuContainer){
+      const hamBurger = document.querySelector(".hamburger");
+      const cross = document.querySelector(".cross");
+      htmlDoc.style.overflowY = "scroll";
+      htmlDoc.style.marginRight = "0";
+      hamBurger.style.visibility = "visible";
+      cross.style.visibility = "hidden";
+      slideMenu.classList.add("collapsed");
+      slideMenu.style.top = "-100vh";
+    }
+  });
+</script>
+</header>
+<main id="content"  style="margin-top: 80px;" >
+<div
+  style="display: flex; flex-direction: column;"
+>
+  <h1 style="margin: 0 0 0.25em 0; font-size: 2em;">Markdwon语法学习</h1>
+  <div class="sharing-icons">
+    
+
+<div style="display: flex; flex-direction: row;">
+  
+  <a
+    class="sharing-icon"
+    href="https://facebook.com/sharer/sharer.php?u=%2fpost%2ftext%2f"
+    target="_blank"
+    rel="noopener"
+    aria-label="share on facebook"
+  >
+    <i>
+      <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fab"
+  data-icon="facebook"
+  class="svg-inline--fa fa-facebook fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+  ></path>
+</svg>
+
+    </i>
+  </a>
+
+  
+  <a
+    class="sharing-icon"
+    href="https://twitter.com/intent/tweet/?text=Markdwon%e8%af%ad%e6%b3%95%e5%ad%a6%e4%b9%a0%20by%20ZYOOO&amp;url=%2fpost%2ftext%2f"
+    target="_blank"
+    rel="noopener"
+    aria-label="share on twitter"
+  >
+    <i>
+      <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fab"
+  data-icon="twitter"
+  class="svg-inline--fa fa-twitter fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+  ></path>
+</svg>
+
+    </i>
+  </a>
+
+  
+  <a
+    class="sharing-icon"
+    href="mailto:?subject=Markdwon%e8%af%ad%e6%b3%95%e5%ad%a6%e4%b9%a0%20by%20ZYOOO&amp;body=%2fpost%2ftext%2f"
+    target="_self"
+    rel="noopener"
+    aria-label="share by email"
+  >
+    <i>
+      <svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="envelope"
+  class="svg-inline--fa fa-envelope fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+  ></path>
+</svg>
+
+    </i>
+  </a>
+</div>
+
+  </div>
+  <div class="metadata">
+    <div style="display: flex; flex-direction: column;">
+
+    
+    
+    
+    <p style="margin: 2px 0;">
+      
+      <a
+        class="metadata-items"
+        href="/categories/"
+        title="categories"
+        style="margin-right: 0.5em; text-decoration: underline; font-size: 0.8em;"
+      ></a>
+      
+    </p>
+     
+    
+    <p style="margin: 2px 0;">
+      
+      <a
+        class="metadata-items"
+        href="/tags/%E5%AD%A6%E4%B9%A0"
+        title="tags"
+        style="margin-right: 0.5em; text-decoration: underline; font-size: 0.8em;"
+      >学习</a>
+      
+    </p>
+     
+  </div>
+  </div>
+</div>
+<div style="margin-bottom: 3.5em; font-style: italic; font-size: 0.9em;">by ZYOOO &middot;
+  <time>2020/05/19</time></div>
+<div class="content">
+  <h1 id="markdown">Markdown</h1>
+<h2 id="代码块">代码块</h2>
+<p>“   ```   ”加上语言可形成代码块（英文输入法）</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">#include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#66d9ef">int</span> <span style="color:#a6e22e">mian</span> (<span style="color:#66d9ef">void</span>)
+{
+    printf(<span style="color:#e6db74">&#34;I&#39;m the best handsome in the world.&#34;</span>);
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h2 id="字体">字体</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//加粗
+</span><span style="color:#75715e"></span><span style="color:#f92672">**</span><span style="color:#960050;background-color:#1e0010">被加粗的字体</span><span style="color:#f92672">**</span>
+<span style="color:#75715e">//代码高亮
+</span><span style="color:#75715e"></span><span style="color:#f92672">==</span><span style="color:#960050;background-color:#1e0010">啥啥啥</span><span style="color:#f92672">==</span>
+<span style="color:#75715e">//删除线
+</span><span style="color:#75715e"></span><span style="color:#f92672">~~</span><span style="color:#960050;background-color:#1e0010">被删除的文字</span><span style="color:#f92672">~~</span>
+<span style="color:#75715e">//斜体
+</span><span style="color:#75715e"></span><span style="color:#f92672">*</span><span style="color:#960050;background-color:#1e0010">需要斜体的内容</span><span style="color:#f92672">*</span>
+</code></pre></div><p>//加粗
+<strong>被加粗的字体</strong>
+//代码高亮
+==为什么不高亮==
+//删除线
+<del>被删除的文字</del>
+//斜体
+<em>需要斜体的内容</em></p>
+<h2 id="引用">引用</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//引用语法
+</span><span style="color:#75715e"></span><span style="color:#f92672">&gt;</span><span style="color:#960050;background-color:#1e0010">作者：</span>ZYOOO
+<span style="color:#f92672">&gt;&gt;</span><span style="color:#960050;background-color:#1e0010">作者：</span>ZYOOO
+<span style="color:#f92672">&gt;&gt;&gt;</span><span style="color:#960050;background-color:#1e0010">作者：</span>ZYOOO
+    
+</code></pre></div><p>//引用语法</p>
+<blockquote>
+<p>作者：ZYOOO</p>
+<blockquote>
+<p>作者：ZYOOO</p>
+<blockquote>
+<p>作者：ZYOOO</p>
+</blockquote>
+</blockquote>
+</blockquote>
+<h2 id="分割线">分割线</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//分割线
+</span><span style="color:#75715e"></span><span style="color:#f92672">---</span>
+<span style="color:#75715e">///分割线2
+</span><span style="color:#75715e"></span><span style="color:#f92672">***</span>
+    
+</code></pre></div><hr>
+<hr>
+<h2 id="图片插入">图片插入</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//在线图片或本地图片
+</span><span style="color:#75715e"></span><span style="color:#f92672">![</span>name<span style="color:#f92672">](</span>路径<span style="color:#f92672">)</span>
+</code></pre></div><p><img src="D:%5CDocument%5Cwallpaper%5C13517568-0f10e2a5e4ad689f.jpeg" alt="time"></p>
+<h2 id="超链接">超链接</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-java" data-lang="java"><span style="color:#75715e">//超链接语法
+</span><span style="color:#75715e"></span><span style="color:#f92672">[</span>名字<span style="color:#f92672">](</span>地址<span style="color:#f92672">)</span>
+</code></pre></div><p><a href="https://github.com/ZYOOO">我的GitHub</a></p>
+<h2 id="列表">列表</h2>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c" data-lang="c"><span style="color:#75715e">//无序列表
+</span><span style="color:#75715e"></span><span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">目录</span><span style="color:#ae81ff">1</span>
+<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">目录</span><span style="color:#ae81ff">2</span>
+<span style="color:#f92672">-</span> <span style="color:#960050;background-color:#1e0010">目录</span><span style="color:#ae81ff">3</span>
+<span style="color:#75715e">// 1+. +名称
+</span></code></pre></div><ul>
+<li>吃饭</li>
+<li>睡觉</li>
+<li>打游戏</li>
+</ul>
+<ol>
+<li>吃饭</li>
+<li>睡觉</li>
+<li>打游戏</li>
+</ol>
+<h2 id="表格">表格</h2>
+<table>
+<thead>
+<tr>
+<th>右键插入</th>
+<th></th>
+<th></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+<tr>
+<td></td>
+<td></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+
+</div>
+<script>
+  document.onkeydown = function(e) {
+    switch (e.keyCode) {
+      case 37:
+        
+        document.querySelector(".previous-link").click();
+        break;
+      case 39:
+        
+        document.querySelector(".next-link").click();
+        break;
+    }
+  };
+</script>
+
+    </main>
+    <footer style="display: flex; flex-direction: column; margin-top: 2em;">
+  <div
+    style="
+      position: fixed;
+      bottom: 60px;
+      margin: auto;
+      width: 95vw;
+      max-width: 960px;
+    "
+  >
+    <i
+      class="to-top-button"
+      onclick="toTop()"
+      style="
+        display: none;
+        transform: rotate(-90deg);
+        background-color: var(--bgLighter);
+        border-radius: 50%;
+        border: solid 2px var(--primaryColor);
+        padding: 10px;
+        position: absolute;
+        cursor: pointer;
+        right: 0;
+        font-size: 1.25em;
+      "
+      ><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="chevron-right"
+  class="svg-inline--fa fa-chevron-right fa-w-10"
+  style="transform: rotate(0deg);"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 320 512"
+>
+  <path
+    fill="currentColor"
+    d="M285.476 272.971L91.132 467.314c-9.373 9.373-24.569 9.373-33.941 0l-22.667-22.667c-9.357-9.357-9.375-24.522-.04-33.901L188.505 256 34.484 101.255c-9.335-9.379-9.317-24.544.04-33.901l22.667-22.667c9.373-9.373 24.569-9.373 33.941 0L285.475 239.03c9.373 9.372 9.373 24.568.001 33.941z"
+  ></path>
+</svg>
+</i
+    >
+  </div>
+
+   <div style="display: flex; flex-direction: row; justify-content: space-around">
+  <div>
+    <a
+      class="previous-link active"
+      href="/post/post_1/"
+      data-toggle="tooltip"
+      data-placement="top"
+      title=""
+      >Previous</a
+    >
+  </div>
+  <div class="next-link disabled">Next</div>
+</div>
+
+  
+  
+  <div
+    style="
+      font-size: 0.8em;
+      background-color: var(--bgDarker);
+      box-shadow: 0px 0px 2px 2px black;
+    "
+  >
+    <div style="display: flex; flex-wrap: wrap;">
+      <div
+        class="footer-social"
+        style="
+          padding: 0 15px;
+          max-width: 400px;
+          flex-basis: 33%;
+          box-sizing: border-box;
+        "
+      >
+        <h3>Contact</h3>
+        <ul style="padding: 0;">
+          
+          <li style="list-style: none;">
+            <a href="#" style="font-variant: small-caps;"
+              ><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fas"
+  data-icon="envelope"
+  class="svg-inline--fa fa-envelope fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M502.3 190.8c3.9-3.1 9.7-.2 9.7 4.7V400c0 26.5-21.5 48-48 48H48c-26.5 0-48-21.5-48-48V195.6c0-5 5.7-7.8 9.7-4.7 22.4 17.4 52.1 39.5 154.1 113.6 21.1 15.4 56.7 47.8 92.2 47.6 35.7.3 72-32.8 92.3-47.6 102-74.1 131.6-96.3 154-113.7zM256 320c23.2.4 56.6-29.2 73.4-41.4 132.7-96.3 142.8-104.7 173.4-128.7 5.8-4.5 9.2-11.5 9.2-18.9v-19c0-26.5-21.5-48-48-48H48C21.5 64 0 85.5 0 112v19c0 7.4 3.4 14.3 9.2 18.9 30.6 23.9 40.7 32.4 173.4 128.7 16.8 12.2 50.2 41.8 73.4 41.4z"
+  ></path>
+</svg>
+email</a
+            >
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="#" style="font-variant: small-caps;"
+              ><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fab"
+  data-icon="github"
+  class="svg-inline--fa fa-github fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 496 512"
+>
+  <path
+    fill="currentColor"
+    d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"
+  ></path>
+</svg>
+github</a
+            >
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="#" style="font-variant: small-caps;"
+              ><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fab"
+  data-icon="linkedin-in"
+  class="svg-inline--fa fa-linkedin-in fa-w-14"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 448 512"
+>
+  <path
+    fill="currentColor"
+    d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"
+  ></path>
+</svg>
+linkedin</a
+            >
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="#" style="font-variant: small-caps;"
+              ><svg
+  aria-hidden="true"
+  focusable="false"
+  data-prefix="fab"
+  data-icon="twitter"
+  class="svg-inline--fa fa-twitter fa-w-16"
+  role="img"
+  xmlns="http://www.w3.org/2000/svg"
+  viewBox="0 0 512 512"
+>
+  <path
+    fill="currentColor"
+    d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+  ></path>
+</svg>
+twitter</a
+            >
+          </li>
+          
+        </ul>
+      </div>
+
+      <div
+        class="footer-sections"
+        style="
+          padding: 0 15px;
+          max-width: 400px;
+          flex-basis: 33%;
+          box-sizing: border-box;
+        "
+      >
+        <h3>Sections</h3>
+        <ul style="padding: 0;">
+          
+          <li style="list-style: none;">
+            <a href="/about/">About Me</a>
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="/post/">Blog Posts</a>
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="/diary/">dairy</a>
+          </li>
+          
+          <li style="list-style: none;">
+            <a href="/archive/">Archive</a>
+          </li>
+          
+        </ul>
+      </div>
+
+      <div
+        class="footer-recent"
+        style="
+          padding: 0 15px;
+          max-width: 400px;
+          flex-basis: 33%;
+          flex-grow: 1;
+          box-sizing: border-box;
+        "
+      >
+        <h3>Recent</h3>
+        <ol style="padding-left: 0.75em;">
+          
+          <li>
+            <a href="/post/text/">Markdwon语法学习</a>
+          </li>
+          
+          <li>
+            <a href="/diary/dairy_1/">Dairy1</a>
+          </li>
+          
+          <li>
+            <a href="/post/post_1/"></a>
+          </li>
+          
+          <li>
+            <a href="/diary/text/"></a>
+          </li>
+          
+          <li>
+            <a href="/diary/poems_1/"></a>
+          </li>
+          
+        </ol>
+      </div>
+    </div>
+    <hr style="width: 50%; border-color: var(--textColor);" />
+    <div style="text-align: center;">
+      <p style="margin: 0 0 5px 0;">2020 ZYOOO</p>
+      <p style="margin: 0;">
+        <a href="https://github.com/darshanbaral/ghazal">ghazal</a> by
+        <a href="https://www.darshanbaral.com/">darshan</a>.
+      </p>
+    </div>
+  </div>
+</footer>
+<script>
+  toTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+</script>
+
+  </body>
+</html>
